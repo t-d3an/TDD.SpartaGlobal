@@ -1,0 +1,22 @@
+person:
+  - fname: Joe
+    sname: Bloggs
+    dob: 1 Jan 1990
+    email: 
+      - joe@example.com
+      - joe.bloggs@work.com
+      
+    phone_number:
+      - 0771234568
+      - 0201234567
+      
+  - fname: Andy
+    sname: Nother
+    dob: 2 Jan 1995
+    email:
+      - andy@example.com
+      
+    phone_number:
+      - 0771234567
+      
+  

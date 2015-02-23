@@ -14,10 +14,20 @@ class Person
     
   def add_email(mail)
     @email << mail
+    if 
+      mail =~ /(\w+)[\@](\w+)[\.](\w{3})/
+    else 
+      raise 'Error: wrong format'
+    end
   end
     
   def add_number(phone)
     @phone_number << phone
+    if 
+      phone =~ /^\d{3}/
+    else 
+      raise 'Error: wrong format'
+    end
   end
     
   def remove_email(rmail)
@@ -27,8 +37,29 @@ class Person
   def remove_number(rphone)
     @phone_number.delete_at(rphone)
   end
-end
+
+#yaml section...
     
+  def load_yaml(person)
+    data = YAML.load(File.open(person))
+      
+      data[:person].each do |yaml_person|
+         person = Person.new(yaml_person[:fname], yaml_person[:sname], yaml_person[:dob])
+      end
+          
+      yaml.person[:email].each do |x|
+        person.add_email(x)
+      end
+          
+      yaml.person[:phone_number].each do |y|
+        person.add_number(y)
+      end
+      
+      book << person
+    end
+    
+end
+#....................................................
 class FamilyMember < Person
   attr_accessor :relationship
     
@@ -40,8 +71,9 @@ class FamilyMember < Person
   def to_s
     "#{@first_name} #{@surname} is person's #{@relationship}"
   end
-end
     
+end
+#...................................................    
 class AddressBook
   attr_reader :book
     
@@ -69,4 +101,6 @@ class AddressBook
       end
     end
   end
+
 end
+#.................................................
