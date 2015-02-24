@@ -20,7 +20,7 @@ describe "Person" do
       person = Person.new "Joe", "Bloggs", "1 Jan 1990"
         
       person.add_email ("joe@foo.com")
-      #person.remove_email (0)
+      #to remove: person.remove_email (0) 
       expect(person.email) .to eq (["joe@foo.com"])
       expect{person.add_email"This is a wrong email"}.to raise_error 
     end
@@ -29,6 +29,7 @@ describe "Person" do
       person = Person.new "Joe", "Bloggs", "1 Jan 1990"
         
       person.add_number ("07712345678")
+      #to remove : person.remove_number (0)
       expect(person.phone_number) .to eq (["07712345678"])
       expect{person.add_phone"This is a wrong phone"}.to raise_error 
     end
@@ -36,7 +37,7 @@ describe "Person" do
 #yaml...
     it "should load yaml file" do 
       
-      expect(book.file('phonebook.yaml')).to be_a(File) 
+      expect(book.file('person.yaml')).to be_a(File) 
  
       book.file('person.yaml') 
       book.load
@@ -57,8 +58,9 @@ describe "Person" do
       
     it "should add ralationship" do
       family = FamilyMember.new "Joe", "Bloggs", "1 Jan 1990"
+    
+    #example relationship test
       family.relationship = "mother"
-      
       expect(family.relationship).to eq ('mother')
     end
       
@@ -68,7 +70,7 @@ describe "Person" do
       
     let(:book){book = AddressBook.new}
     let(:person1){person1 = Person.new "Joe", "Bloggs", "1 Jan 1990"}
-    let(:person2){person2 = Person.new "andy", "nother", "2 Jan 1995"}
+    let(:person2){person2 = Person.new "Andy", "Nother", "2 Jan 1995"}
    
     it "should add address book" do
     book = AddressBook.new
